@@ -23,7 +23,7 @@ async function ensureTicketPanel(client, config) {
     [
       "Atendimento rapido e sem complicacao.",
       "",
-      "🛒 **Delux** - *experiencia completa de otimizacao.*",
+      "🛒 **Delux** - *Experiencia completa de otimizacao.*",
       "⚡ **Edge** - *Nossa otimização mais completa e avançada.*",
       "🛠️ **Suporte** — *Atendimento e dúvidas.*",
       "",
