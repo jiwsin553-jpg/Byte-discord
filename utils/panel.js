@@ -24,11 +24,11 @@ async function ensureTicketPanel(client, config) {
     [
       "Atendimento rapido e sem complicacao.",
       "",
-      "🛒 Vendas Delux - experiencia completa de otimizacao",
-      "⚡ Vendas Edge - upgrade direto ao ponto",
-      "🛠️ Suporte - diagnostico e resolucao tecnica",
+      "🛒 **Delux** - *experiencia completa de otimizacao.*",
+      "⚡ **Edge** - *Nossa otimização mais completa e avançada.*",
+      "🛠️ **Suporte** — *Atendimento e dúvidas.*",
       "",
-      "Clique abaixo e o ticket sera criado automaticamente."
+      "Clique no botão correspondente para abrir um ticket."
     ].join("\n")
   );
   embed
