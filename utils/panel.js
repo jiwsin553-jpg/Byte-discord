@@ -33,7 +33,6 @@ async function ensureTicketPanel(client, config) {
   );
   embed
     .setThumbnail("https://media.discordapp.net/attachments/1469055845902979288/1472679352737988836/Latency.png?ex=69937306&is=69922186&hm=4bcda46468ae5ec48d2af7f85457495f9fe41564aef8b8fb0686ded084cd4891&=&format=webp&quality=lossless&width=256&height=256")
-    .setImage("https://media.discordapp.net/attachments/1469055845902979288/1472679869371383952/Logo1.png?ex=69937381&is=69922201&hm=9da28719a54a306d4e8e2804ed39b02f1b9ec7a44e6c60d94d562637d8dfc62e&=&format=webp&quality=lossless&width=681&height=681")
     .setFooter({ text: "Byte Support • Atendimento" });
 
   const row = new ActionRowBuilder().addComponents(
