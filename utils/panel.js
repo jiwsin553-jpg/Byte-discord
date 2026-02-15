@@ -1,5 +1,6 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const { infoEmbed } = require("./embeds");
+const { get, run } = require("../database/db");
 
 async function ensureTicketPanel(client, config) {
   const channelId = config.ticketPanelChannelId;
@@ -8,14 +9,12 @@ async function ensureTicketPanel(client, config) {
   const channel = await client.channels.fetch(channelId).catch(() => null);
   if (!channel || !channel.isTextBased()) return;
 
-  const recent = await channel.messages.fetch({ limit: 20 }).catch(() => null);
+  const guildId = channel.guild.id;
+  const settings = await get("SELECT panel_message_id FROM settings WHERE guild_id = ?", [guildId]);
+  
   let existingMessage = null;
-  if (recent) {
-    existingMessage = recent.find(
-      (msg) =>
-        msg.author?.id === client.user.id &&
-        msg.embeds?.[0]?.title?.includes("Central de Atendimento")
-    );
+  if (settings?.panel_message_id) {
+    existingMessage = await channel.messages.fetch(settings.panel_message_id).catch(() => null);
   }
 
   const embed = infoEmbed(
@@ -58,7 +57,8 @@ async function ensureTicketPanel(client, config) {
     return;
   }
 
-  await channel.send({ embeds: [embed], components: [row] });
+ const newMessage = await channel.send({ embeds: [embed], components: [row] });
+  await run("UPDATE settings SET panel_message_id = ? WHERE guild_id = ?", [newMessage.id, guildId]);
 }
 
 module.exports = {
