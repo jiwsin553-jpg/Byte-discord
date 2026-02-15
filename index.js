@@ -10,6 +10,7 @@ const config = loadConfig();
 
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.CLIENT_ID;
+const guildId = "1141449366893252690";
 
 if (!token || !clientId) {
   throw new Error("Variaveis DISCORD_TOKEN e CLIENT_ID sao obrigatorias.");
@@ -55,7 +56,7 @@ for (const file of eventFiles) {
 
 async function registerCommands() {
   const rest = new REST({ version: "10" }).setToken(token);
-  await rest.put(Routes.applicationCommands(clientId), { body: commandsData });
+  await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandsData });
 }
 
 registerCommands()
