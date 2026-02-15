@@ -1,0 +1,45 @@
+{
+  "botName": "Byte Support",
+  "colors": {
+    "primary": "#1e88e5",
+    "success": "#2e7d32",
+    "warning": "#f9a825",
+    "danger": "#c62828"
+  },
+  "limits": {
+    "ticketCooldownMinutes": 5,
+    "maxOpenTicketsPerGuild": 25,
+    "logRetentionDays": 30
+  },
+  "keywords": {
+    "sales": ["comprar", "preco", "valor", "orcamento", "otimizacao", "delux", "edge"],
+    "support": ["ajuda", "suporte", "erro", "problema", "travando", "bug"],
+    "faq": {
+      "pix": "Aceitamos PIX. Envie o pagamento para brunoquirin3@gmail.com (Nubank, Bruno Quirino).",
+      "prazo": "O prazo medio de atendimento e de ate 24 horas uteis.",
+      "garantia": "Oferecemos suporte para ajustes basicos por 7 dias apos a entrega."
+    }
+  },
+  "products": [
+    {
+      "id": "delux",
+      "name": "Otimizacao Delux",
+      "priceOriginal": "R$ 19,99",
+      "pricePromo": "R$ 10,99"
+    },
+    {
+      "id": "edge",
+      "name": "Otimizacao Edge",
+      "priceOriginal": "R$ 10,50",
+      "pricePromo": "R$ 5,00"
+    }
+  ],
+  "payment": {
+    "pix": "brunoquirin3@gmail.com",
+    "bank": "Nubank",
+    "beneficiary": "Bruno Quirino",
+    "qrCode": ""
+  },
+  "voiceChannelId": "1472674114266468543",
+  "ticketPanelChannelId": "1233474945686704208"
+}
