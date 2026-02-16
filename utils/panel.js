@@ -21,13 +21,13 @@ async function ensureTicketPanel(client, config) {
     config,
     "Byte Support | Central de Atendimento",
     [
-      "Atendimento rapido e sem complicacao.",
+      "Atendimento premium com tecnologia de ponta.",
       "",
-      "🛒 **Delux** - *Experiencia completa de otimizacao.*",
-      "⚡ **Edge** - *Nossa otimização mais completa e avançada.*",
-      "🛠️ **Suporte** — *Atendimento e dúvidas.*",
+      "<:Carrinho_RkBots:1472985587106578584> **Vendas Delux** — *Otimização premium completa*",
+      "<a:blue_raiocr:1472984934913278173> **Vendas Edge** — *Performance avançada e rápida*",
+      "<a:blue_ferramenta:1472985090207518831> **Suporte** — *Assistência técnica especializada*",
       "",
-      "Clique no botão correspondente para abrir um ticket."
+      "**Selecione um atendimento abaixo**"
     ].join("\n")
   );
   embed
@@ -38,17 +38,17 @@ async function ensureTicketPanel(client, config) {
     new ButtonBuilder()
       .setCustomId("ticket_open_sales_delux")
       .setLabel("Vendas Delux")
-      .setEmoji("🛒")
+      .setEmoji("1472985587106578584")
       .setStyle(ButtonStyle.Primary),
     new ButtonBuilder()
       .setCustomId("ticket_open_sales_edge")
       .setLabel("Vendas Edge")
-      .setEmoji("⚡")
+      .setEmoji("1472984934913278173")
       .setStyle(ButtonStyle.Primary),
     new ButtonBuilder()
       .setCustomId("ticket_open_support")
       .setLabel("Suporte")
-      .setEmoji("🛠️")
+      .setEmoji("1472985090207518831")
       .setStyle(ButtonStyle.Secondary)
   );
 

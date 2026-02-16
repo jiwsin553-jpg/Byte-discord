@@ -21,7 +21,7 @@ module.exports = {
     const faq = detectFaq(message.content, config);
     if (faq) {
       await message.reply({
-        embeds: [infoEmbed(config, "📚 FAQ", faq).setFooter({ text: "Byte Support • Resposta rapida" })]
+        embeds: [infoEmbed(config, "📚 FAQ", faq).setFooter({ text: "Byte Support • Resposta automática" })]
       });
       return;
     }
@@ -42,7 +42,7 @@ module.exports = {
 
     if (result.error) {
       await message.reply({
-        embeds: [warningEmbed(config, "⚠️ Ticket nao criado", result.error)]
+        embeds: [warningEmbed(config, "<a:atencaocc:1472985634678505603> Ticket não criado", result.error)]
       });
       return;
     }
@@ -51,9 +51,9 @@ module.exports = {
         embeds: [
           infoEmbed(
             config,
-            "✅ Ticket criado",
-            `Canal criado: ${result.channel}\nEm breve nossa equipe responde aqui.`
-          ).setFooter({ text: "Byte Support" })
+            "<a:yes:1342867998993551366> Ticket criado",
+            `Canal criado: ${result.channel}\n<a:carregando1:1342856167927582720> Aguarde, nossa equipe já está a caminho!`
+          ).setFooter({ text: "Byte Support • Atendimento premium" })
         ]
       });
 

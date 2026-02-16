@@ -123,7 +123,7 @@ async function createTicket({ guild, member, type, config, settings, productId }
   const qrCodeText = settings.payment_qr_code ? `\nQR Code: ${settings.payment_qr_code}` : "";
   const payment = `PIX: ${config.payment.pix}\nBanco: ${config.payment.bank}\nBeneficiario: ${config.payment.beneficiary}${qrCodeText}`;
 
-  const titlePrefix = type === "sales" ? "🛒 Vendas" : "🛠️ Suporte";
+  const titlePrefix = type === "sales" ? "<:Carrinho_RkBots:1472985587106578584> Vendas" : "<a:blue_ferramenta:1472985090207518831> Suporte";
   const embed = infoEmbed(
     config,
     `${config.botName} | ${titlePrefix} • #${formatted}`,
@@ -204,7 +204,7 @@ async function closeTicket(channel, userId, config) {
 
   const closeEmbed = successEmbed(
     config,
-    "🔒 Ticket encerrado",
+    "<a:yes:1342867998993551366> Ticket encerrado",
     "Avalie o atendimento de 1 a 5 estrelas para concluir."
   ).setFooter({ text: "Byte Support • Feedback" });
 
@@ -221,8 +221,8 @@ async function registerRating(channel, rating, config) {
 
   const ratingEmbed = warningEmbed(
     config,
-    "⭐ Obrigado!",
-    "Sua avaliacao foi registrada. O canal sera encerrado em 5 segundos."
+    "⭐ Obrigado pela avaliação!",
+    "Sua nota foi registrada. Este canal será encerrado em 5 segundos."
   ).setFooter({ text: "Byte Support • Encerramento" });
 
   await channel.send({ embeds: [ratingEmbed] });
