@@ -24,8 +24,8 @@ async function ensureTicketPanel(client, config) {
     [
       "Atendimento rápido e sem complicação.",
       "",
-      "<a:25801:1411565345696911430> *Vendas Delux* - **Nossa otimização mais completa e avançada.**",
-      "<a:blue_raiocr:1465906040574050387> *Vendas Edge* - **Recomendada para usuários que querem desempenho sem alterações profundas.**",
+      "<a:az_seta:1342855775021961217> *Vendas Delux* - **Nossa otimização mais completa e avançada.**",
+      "<a:az_seta:1342855775021961217> *Vendas Edge* - **Recomendada para usuários que querem desempenho sem alterações profundas.**",
       "<a:blue_ferramenta:1472985090207518831> *Suporte* - **Diagnóstico e resolução de problemas**",
       "",
       "Clique abaixo e o ticket será criado."
