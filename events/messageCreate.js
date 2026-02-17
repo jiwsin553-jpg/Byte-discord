@@ -21,7 +21,7 @@ module.exports = {
     const faq = detectFaq(message.content, config);
     if (faq) {
       await message.reply({
-        embeds: [infoEmbed(config, "ðŸ“š FAQ", faq).setFooter({ text: "Byte Support â€¢ Resposta rapida" })]
+        embeds: [infoEmbed(config, "­ƒôÜ FAQ", faq).setFooter({ text: "Byte Support ÔÇó Resposta rapida" })]
       });
       return;
     }
@@ -42,7 +42,7 @@ module.exports = {
 
     if (result.error) {
       await message.reply({
-        embeds: [warningEmbed(config, "âš ï¸ Ticket nao criado", result.error)]
+        embeds: [warningEmbed(config, "ÔÜá´©Å Ticket nao criado", result.error)]
       });
       return;
     }
@@ -51,7 +51,7 @@ module.exports = {
         embeds: [
           infoEmbed(
             config,
-            "âœ… Ticket criado",
+            "Ô£à Ticket criado",
             `Canal criado: ${result.channel}\nEm breve nossa equipe responde aqui.`
           ).setFooter({ text: "Byte Support" })
         ]
