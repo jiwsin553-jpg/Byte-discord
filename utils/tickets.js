@@ -185,7 +185,7 @@ async function closeTicket(channel, userId, config) {
   );
 
   if (!ticket) {
-    return { error: "Ticket nao encontrado ou ja fechado." };
+    return { error: "Ticket não encontrado ou já fechado." };
   }
 
   await run(
@@ -215,14 +215,14 @@ async function closeTicket(channel, userId, config) {
 
 async function registerRating(channel, rating, config) {
   const ticket = await get("SELECT * FROM tickets WHERE channel_id = ?", [channel.id]);
-  if (!ticket) return { error: "Ticket nao encontrado." };
+  if (!ticket) return { error: "Ticket não encontrado." };
 
   await run("UPDATE tickets SET rating = ? WHERE id = ?", [rating, ticket.id]);
 
   const ratingEmbed = warningEmbed(
     config,
     "⭐ Obrigado!",
-    "Sua avaliacao foi registrada. O canal sera encerrado em 5 segundos."
+    "Sua avaliação foi registrada. O canal será encerrado em 5 segundos."
   ).setFooter({ text: "Byte Encerramento" });
 
   await channel.send({ embeds: [ratingEmbed] });

@@ -12,12 +12,12 @@
     "logRetentionDays": 30
   },
   "keywords": {
-    "sales": ["comprar", "preco", "valor", "orcamento", "otimizacao", "delux", "edge"],
+    "sales": ["comprar", "preço", "valor", "orçamento", "otimização", "delux", "edge"],
     "support": ["ajuda", "suporte", "erro", "problema", "travando", "bug"],
     "faq": {
-      "pix": "Aceitamos PIX. Envie o pagamento para brunoquirin3@gmail.com (Nubank, Bruno Quirino).",
-      "prazo": "O prazo medio de atendimento e de ate 24 horas uteis.",
-      "garantia": "Oferecemos suporte para ajustes basicos por 7 dias apos a entrega."
+      "pix": "Aceitamos PIX. Envie o pagamento para brunoquirin3@gmail.com (Nubank).",
+      "prazo": "O prazo médio de atendimento é de até 24 horas úteis.",
+      "garantia": "Oferecemos suporte para ajustes básicos por 7 dias após a entrega."
     }
   },
   "products": [

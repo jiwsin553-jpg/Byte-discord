@@ -44,7 +44,7 @@ module.exports = {
 
       if (!settings && !adminRole) {
         return interaction.reply({
-          embeds: [dangerEmbed(config, "Configuracao incompleta", "Informe o cargo admin para primeira configuracao.")],
+          embeds: [dangerEmbed(config, "Configuração incompleta", "Informe o cargo admin para primeira configuração.")],
           ephemeral: true
         });
       }
@@ -55,14 +55,14 @@ module.exports = {
 
       if (!settings && !hasAdminPerm && !hasAdminRole) {
         return interaction.reply({
-          embeds: [dangerEmbed(config, "Sem permissao", "Apenas administradores podem usar /config.")],
+          embeds: [dangerEmbed(config, "Sem permissão", "Apenas administradores podem usar /config.")],
           ephemeral: true
         });
       }
 
       if (settings && !isAdmin(interaction.member, settings)) {
         return interaction.reply({
-          embeds: [dangerEmbed(config, "Sem permissao", "Apenas administradores podem usar /config.")],
+          embeds: [dangerEmbed(config, "Sem permissão", "Apenas administradores podem usar /config.")],
           ephemeral: true
         });
       }
@@ -79,7 +79,7 @@ module.exports = {
       const missing = Object.values(data).some((value) => !value);
       if (missing) {
         return interaction.reply({
-          embeds: [dangerEmbed(config, "Configuracao incompleta", "Preencha todos os campos obrigatorios.")],
+          embeds: [dangerEmbed(config, "Configuração incompleta", "Preencha todos os campos obrigatórios.")],
           ephemeral: true
         });
       }
@@ -87,14 +87,14 @@ module.exports = {
       await upsertSettings(interaction.guild.id, data);
 
       await interaction.reply({
-        embeds: [successEmbed(config, "Configuracao salva", "Parametros atualizados com sucesso.")],
+        embeds: [successEmbed(config, "Configuração salva", "Parâmetros atualizados com sucesso.")],
         ephemeral: true
       });
 
-      await logToDb(interaction.guild.id, "info", "Configuracao atualizada", data);
+      await logToDb(interaction.guild.id, "info", "Configuração atualizada", data);
 
       if (logChannel) {
-        await logToChannel(logChannel, config, "info", "Configuracao do bot atualizada.");
+        await logToChannel(logChannel, config, "info", "Configuração do bot atualizada.");
       }
     }
 
@@ -141,9 +141,9 @@ module.exports = {
             { name: "Canal", value: `<#${interaction.channel.id}>`, inline: true },
             { name: "Usuario", value: `<@${result.ticket.user_id}>`, inline: true },
             { name: "Staff", value: `<@${interaction.user.id}>`, inline: true },
-            { name: "Duracao", value: durationText, inline: true },
-            { name: "Avaliacao", value: "Aguardando usuario", inline: true },
-            { name: "Transcript", value: "Nao disponivel", inline: true }
+            { name: "Duração", value: durationText, inline: true },
+            { name: "Avaliação", value: "Aguardando usuário", inline: true },
+            { name: "Transcrição", value: "Não disponível", inline: true }
           ],
           footer: "Byte Logs"
         });
@@ -160,22 +160,22 @@ module.exports = {
         }
 
         await interaction.reply({
-          embeds: [successEmbed(config, "Avaliacao recebida", `Nota registrada: ${rating} estrelas.`)],
+          embeds: [successEmbed(config, "Avaliação recebida", `Nota registrada: ${rating} estrelas.`)],
           ephemeral: true
         });
 
         const settings = await getSettings(interaction.guild.id);
         const logChannel = settings ? interaction.guild.channels.cache.get(settings.log_channel_id) : null;
-        await logToDb(interaction.guild.id, "info", "Avaliacao registrada", {
+        await logToDb(interaction.guild.id, "info", "Avaliação registrada", {
           channelId: interaction.channel.id,
           userId: result.ticket.user_id,
           rating
         });
-        await logToChannel(logChannel, config, "info", "Avaliacao recebida.", {
+        await logToChannel(logChannel, config, "info", "Avaliação recebida.", {
           title: `${config.botName} | Feedback`,
           fields: [
             { name: "Canal", value: `<#${interaction.channel.id}>`, inline: true },
-            { name: "Usuario", value: `<@${result.ticket.user_id}>`, inline: true },
+            { name: "Usuário", value: `<@${result.ticket.user_id}>`, inline: true },
             { name: "Nota", value: formatStars(rating), inline: true }
           ],
           footer: "Byte Logs"
@@ -187,7 +187,7 @@ module.exports = {
         const settings = await getSettings(interaction.guild.id);
         if (!settings) {
           return interaction.reply({
-            embeds: [dangerEmbed(config, "Configuracao pendente", "Execute /config antes de abrir tickets.")],
+            embeds: [dangerEmbed(config, "Configuração pendente", "Execute /config antes de abrir tickets.")],
             ephemeral: true
           });
         }
@@ -207,7 +207,7 @@ module.exports = {
 
         if (result.error) {
           return interaction.reply({
-            embeds: [dangerEmbed(config, "Ticket nao criado", result.error)],
+            embeds: [dangerEmbed(config, "Ticket não criado", result.error)],
             ephemeral: true
           });
         }
@@ -228,9 +228,9 @@ module.exports = {
           title: `${config.botName} | Ticket criado`,
           fields: [
             { name: "Canal", value: `<#${result.channel.id}>`, inline: true },
-            { name: "Usuario", value: `<@${interaction.user.id}>`, inline: true },
+            { name: "Usuário", value: `<@${interaction.user.id}>`, inline: true },
             { name: "Tipo", value: type === "support" ? "Suporte" : "Vendas", inline: true },
-            { name: "Produto", value: productId || "Nao informado", inline: true },
+            { name: "Produto", value: productId || "Não informado", inline: true },
             { name: "Status", value: "Aberto", inline: true }
           ],
           footer: "Byte Logs"
