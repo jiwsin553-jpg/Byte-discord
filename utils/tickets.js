@@ -113,7 +113,7 @@ async function createTicket({ guild, member, type, config, settings, productId }
     : "Atendimento de suporte iniciado. Descreva o problema com detalhes.";
 
   const products = config.products
-    .map((p) => `ÔÇó ${p.name}: de ${p.priceOriginal} por ${p.pricePromo}`)
+    .map((p) => `• ${p.name}: de ${p.priceOriginal} por ${p.pricePromo}`)
     .join("\n");
 
   const selectedProduct = productId
@@ -123,10 +123,10 @@ async function createTicket({ guild, member, type, config, settings, productId }
   const qrCodeText = settings.payment_qr_code ? `\nQR Code: ${settings.payment_qr_code}` : "";
   const payment = `PIX: ${config.payment.pix}\nBanco: ${config.payment.bank}\nBeneficiario: ${config.payment.beneficiary}${qrCodeText}`;
 
-  const titlePrefix = type === "sales" ? "­ƒøÆ Vendas" : "­ƒøá´©Å Suporte";
+  const titlePrefix = type === "sales" ? "<:Carrinho_RkBots:1472985587106578584> Vendas" : "<a:blue_ferramenta:1472985090207518831> Suporte";
   const embed = infoEmbed(
     config,
-    `${config.botName} | ${titlePrefix} ÔÇó #${formatted}`,
+    `${config.botName} | ${titlePrefix} • #${formatted}`,
     intro
   );
 
@@ -137,24 +137,24 @@ async function createTicket({ guild, member, type, config, settings, productId }
 
     embed.addFields(
       {
-        name: "­ƒôî Produto selecionado",
+        name: "📌 Produto selecionado",
         value: productLine,
         inline: false
       },
       {
-        name: "­ƒº¥ Catalogo",
+        name: "🧾 Catalogo",
         value: products,
         inline: false
       },
       {
-        name: "­ƒÆ│ Pagamento",
+        name: "💳 Pagamento",
         value: payment,
         inline: false
       }
     );
   } else {
     embed.addFields({
-      name: "­ƒôî Instrucoes",
+      name: "📌 Instrucoes",
       value: "Informe o problema, quando ocorre e o que ja tentou. Se possivel, anexe imagens.",
       inline: false
     });
@@ -204,9 +204,9 @@ async function closeTicket(channel, userId, config) {
 
   const closeEmbed = successEmbed(
     config,
-    "­ƒöÆ Ticket encerrado",
+    "🔒 Ticket encerrado",
     "Avalie o atendimento de 1 a 5 estrelas para concluir."
-  ).setFooter({ text: "Byte Support ÔÇó Feedback" });
+  ).setFooter({ text: "Byte Feedback" });
 
   await channel.send({ embeds: [closeEmbed], components: [ratingRow] });
 
@@ -221,9 +221,9 @@ async function registerRating(channel, rating, config) {
 
   const ratingEmbed = warningEmbed(
     config,
-    "Ô¡É Obrigado!",
+    "⭐ Obrigado!",
     "Sua avaliacao foi registrada. O canal sera encerrado em 5 segundos."
-  ).setFooter({ text: "Byte Support ÔÇó Encerramento" });
+  ).setFooter({ text: "Byte Encerramento" });
 
   await channel.send({ embeds: [ratingEmbed] });
 

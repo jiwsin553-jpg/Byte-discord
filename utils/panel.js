@@ -22,19 +22,18 @@ async function ensureTicketPanel(client, config) {
     config,
     "Byte Support | Central de Atendimento",
     [
-      "Atendimento rapido e sem complicacao.",
+      "Atendimento rápido e sem complicação.",
       "",
       "<a:25801:1411565345696911430> *Vendas Delux* - **Nossa otimização mais completa e avançada.**",
       "<a:blue_raiocr:1465906040574050387> *Vendas Edge* - **Recomendada para usuários que querem desempenho sem alterações profundas.**",
-      "<a:blue_ferramenta:1472985090207518831> *Suporte* - **Diagnostico e resolucao tecnica**",
+      "<a:blue_ferramenta:1472985090207518831> *Suporte* - **Diagnóstico e resolução de problemas**",
       "",
-      "Clique abaixo e o ticket sera criado automaticamente."
+      "Clique abaixo e o ticket será criado."
     ].join("\n")
   );
   embed
     .setThumbnail("https://media.discordapp.net/attachments/1469055845902979288/1472679352737988836/Latency.png?ex=69937306&is=69922186&hm=4bcda46468ae5ec48d2af7f85457495f9fe41564aef8b8fb0686ded084cd4891&=&format=webp&quality=lossless&width=256&height=256")
-    .setImage("https://media.discordapp.net/attachments/1469055845902979288/1472679869371383952/Logo1.png?ex=69937381&is=69922201&hm=9da28719a54a306d4e8e2804ed39b02f1b9ec7a44e6c60d94d562637d8dfc62e&=&format=webp&quality=lossless&width=681&height=681")
-    .setFooter({ text: "Byte Support • Atendimento" });
+    .setFooter({ text: "Byte Atendimento" });
 
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
@@ -50,7 +49,7 @@ async function ensureTicketPanel(client, config) {
     new ButtonBuilder()
       .setCustomId("ticket_open_support")
       .setLabel("Suporte")
-      .setEmoji("472985090207518831")
+      .setEmoji("1472985090207518831")
       .setStyle(ButtonStyle.Secondary)
   );
 

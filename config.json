@@ -23,21 +23,24 @@
   "products": [
     {
       "id": "delux",
-      "name": "Otimizacao Delux",
-      "priceOriginal": "R$ ~~19,99~~",
-      "pricePromo": "R$ 10,99"
+      "name": "Otimização Delux",
+      "priceOriginal": "**R$ ~~19,99~~**",
+      "pricePromo": "**R$ 10,99**"
     },
     {
       "id": "edge",
-      "name": "Otimizacao Edge",
-      "priceOriginal": "R$ ~~10,50~~",
-      "pricePromo": "R$ 5,00"
+      "name": "Otimização Edge",
+      "priceOriginal": "**R$ ~~10,50~~**",
+      "pricePromo": "**R$ 5,00**"
     }
   ],
   "payment": {
-    "pix": "brunoquirin3@gmail.com",
-    "bank": "Nubank",
-    "beneficiary": "Bruno Quirino",
+    "pix": "**brunoquirin3@gmail.com**",
+
+    "bank": "**Nubank**",
+
+    "beneficiary": "**Bruno Quirino**",
+    
     "qrCode": ""
   },
   "voiceChannelId": "1472674114266468543",

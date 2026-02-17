@@ -10,6 +10,23 @@ const { isAdmin } = require("../utils/permissions");
 const { closeTicket, registerRating, createTicket } = require("../utils/tickets");
 const { logToDb, logToChannel } = require("../utils/logger");
 
+function formatDuration(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  const parts = [];
+  if (hours) parts.push(`${hours}h`);
+  if (minutes) parts.push(`${minutes}m`);
+  parts.push(`${seconds}s`);
+  return parts.join(" ");
+}
+
+function formatStars(value) {
+  if (!value) return "Pendente";
+  return `${"⭐".repeat(value)} (${value}/5)`;
+}
+
 module.exports = {
   name: "interactionCreate",
   async execute(interaction, config) {
@@ -91,7 +108,7 @@ module.exports = {
         );
 
         return interaction.reply({
-          embeds: [infoEmbed(config, "Confirmacao", "Deseja realmente fechar este ticket?")],
+          embeds: [infoEmbed(config, "<a:atencaocc:1472985634678505603> Confirmação <a:atencaocc:1472985634678505603>", "Deseja realmente fechar este ticket?")],
           components: [row],
           ephemeral: true
         });
@@ -117,7 +134,19 @@ module.exports = {
           channelId: interaction.channel.id,
           userId: interaction.user.id
         });
-        await logToChannel(logChannel, config, "info", `Ticket fechado: ${interaction.channel.name}`);
+        const durationText = formatDuration(Date.now() - result.ticket.created_at);
+        await logToChannel(logChannel, config, "info", "Ticket encerrado.", {
+          title: `${config.botName} | Ticket fechado`,
+          fields: [
+            { name: "Canal", value: `<#${interaction.channel.id}>`, inline: true },
+            { name: "Usuario", value: `<@${result.ticket.user_id}>`, inline: true },
+            { name: "Staff", value: `<@${interaction.user.id}>`, inline: true },
+            { name: "Duracao", value: durationText, inline: true },
+            { name: "Avaliacao", value: "Aguardando usuario", inline: true },
+            { name: "Transcript", value: "Nao disponivel", inline: true }
+          ],
+          footer: "Byte Logs"
+        });
       }
 
       if (interaction.customId.startsWith("ticket_rate_")) {
@@ -133,6 +162,23 @@ module.exports = {
         await interaction.reply({
           embeds: [successEmbed(config, "Avaliacao recebida", `Nota registrada: ${rating} estrelas.`)],
           ephemeral: true
+        });
+
+        const settings = await getSettings(interaction.guild.id);
+        const logChannel = settings ? interaction.guild.channels.cache.get(settings.log_channel_id) : null;
+        await logToDb(interaction.guild.id, "info", "Avaliacao registrada", {
+          channelId: interaction.channel.id,
+          userId: result.ticket.user_id,
+          rating
+        });
+        await logToChannel(logChannel, config, "info", "Avaliacao recebida.", {
+          title: `${config.botName} | Feedback`,
+          fields: [
+            { name: "Canal", value: `<#${interaction.channel.id}>`, inline: true },
+            { name: "Usuario", value: `<@${result.ticket.user_id}>`, inline: true },
+            { name: "Nota", value: formatStars(rating), inline: true }
+          ],
+          footer: "Byte Logs"
         });
       }
 
@@ -178,7 +224,17 @@ module.exports = {
           type: type === "support" ? "support" : "sales",
           productId
         });
-        await logToChannel(logChannel, config, "info", `Ticket criado: ${result.channel.name}`);
+        await logToChannel(logChannel, config, "info", "Novo ticket criado.", {
+          title: `${config.botName} | Ticket criado`,
+          fields: [
+            { name: "Canal", value: `<#${result.channel.id}>`, inline: true },
+            { name: "Usuario", value: `<@${interaction.user.id}>`, inline: true },
+            { name: "Tipo", value: type === "support" ? "Suporte" : "Vendas", inline: true },
+            { name: "Produto", value: productId || "Nao informado", inline: true },
+            { name: "Status", value: "Aberto", inline: true }
+          ],
+          footer: "Byte Logs"
+        });
       }
     }
   }

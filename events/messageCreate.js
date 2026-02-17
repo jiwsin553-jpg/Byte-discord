@@ -1,4 +1,4 @@
-﻿const { detectIntent, detectFaq, detectProduct } = require("../utils/keywords");
+const { detectIntent, detectFaq, detectProduct } = require("../utils/keywords");
 const { createTicket } = require("../utils/tickets");
 const { getSettings } = require("../utils/settings");
 const { infoEmbed, warningEmbed } = require("../utils/embeds");
@@ -21,7 +21,7 @@ module.exports = {
     const faq = detectFaq(message.content, config);
     if (faq) {
       await message.reply({
-        embeds: [infoEmbed(config, "­ƒôÜ FAQ", faq).setFooter({ text: "Byte Support ÔÇó Resposta rapida" })]
+        embeds: [infoEmbed(config, "📚 FAQ", faq).setFooter({ text: "Byte Support • Resposta rapida" })]
       });
       return;
     }
@@ -42,7 +42,7 @@ module.exports = {
 
     if (result.error) {
       await message.reply({
-        embeds: [warningEmbed(config, "ÔÜá´©Å Ticket nao criado", result.error)]
+        embeds: [warningEmbed(config, "⚠️ Ticket nao criado", result.error)]
       });
       return;
     }
@@ -51,7 +51,7 @@ module.exports = {
         embeds: [
           infoEmbed(
             config,
-            "Ô£à Ticket criado",
+            "✅ Ticket criado",
             `Canal criado: ${result.channel}\nEm breve nossa equipe responde aqui.`
           ).setFooter({ text: "Byte Support" })
         ]
@@ -63,6 +63,16 @@ module.exports = {
       userId: message.author.id,
       type: intent
     });
-    await logToChannel(logChannel, config, "info", `Ticket criado: ${result.channel.name}`);
+    await logToChannel(logChannel, config, "info", "Novo ticket criado.", {
+      title: `${config.botName} | Ticket criado`,
+      fields: [
+        { name: "Canal", value: `<#${result.channel.id}>`, inline: true },
+        { name: "Usuario", value: `<@${message.author.id}>`, inline: true },
+        { name: "Tipo", value: intent === "support" ? "Suporte" : "Vendas", inline: true },
+        { name: "Produto", value: productId || "Nao informado", inline: true },
+        { name: "Status", value: "Aberto", inline: true }
+      ],
+      footer: "Byte Support • Logs"
+    });
   }
 };
