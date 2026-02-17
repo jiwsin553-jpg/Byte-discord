@@ -21,24 +21,24 @@ async function ensureTicketPanel(client, config) {
     config,
     "Byte Support | Central de Atendimento",
     [
-      "Atendimento premium com tecnologia de ponta.",
+      "Atendimento rapido e facil.",
       "",
-      "<:Carrinho_RkBots:1472985587106578584> **Vendas Delux** — *Otimização premium completa*",
-      "<a:blue_raiocr:1472984934913278173> **Vendas Edge** — *Performance avançada e rápida*",
-      "<a:blue_ferramenta:1472985090207518831> **Suporte** — *Assistência técnica especializada*",
+      "<a:az_seta:1342855775021961217> **Vendas Delux** — * Ideal para quem quer máximo desempenho, seja para jogos, trabalho ou uso intenso.*",
+      "<a:az_seta:1342855775021961217>**Vendas Edge** — *Recomendada para usuários que querem desempenho sem alterações profundas.*",
+      "<a:blue_ferramenta:1472985090207518831> **Suporte** — *Para suporte*",
       "",
       "**Selecione um atendimento abaixo**"
     ].join("\n")
   );
   embed
     .setThumbnail("https://media.discordapp.net/attachments/1469055845902979288/1472679352737988836/Latency.png?ex=69937306&is=69922186&hm=4bcda46468ae5ec48d2af7f85457495f9fe41564aef8b8fb0686ded084cd4891&=&format=webp&quality=lossless&width=256&height=256")
-    .setFooter({ text: "Byte Support • Atendimento" });
+    .setFooter({ text: "Byte Support" });
 
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
       .setCustomId("ticket_open_sales_delux")
       .setLabel("Vendas Delux")
-      .setEmoji("1472985587106578584")
+      .setEmoji("1342876167652245637")
       .setStyle(ButtonStyle.Primary),
     new ButtonBuilder()
       .setCustomId("ticket_open_sales_edge")

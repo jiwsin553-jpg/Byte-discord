@@ -53,7 +53,7 @@ module.exports = {
             config,
             "<a:yes:1342867998993551366> Ticket criado",
             `Canal criado: ${result.channel}\n<a:carregando1:1342856167927582720> Aguarde, nossa equipe já está a caminho!`
-          ).setFooter({ text: "Byte Support • Atendimento premium" })
+          ).setFooter({ text: "Byte Support" })
         ]
       });
 

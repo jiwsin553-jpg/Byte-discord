@@ -1,7 +1,7 @@
 const cron = require("node-cron");
 const { initDb, run } = require("../database/db");
 const { backupDatabase, pruneBackups } = require("../utils/backup");
-const { joinConfiguredVoice } = require("../utils/voice");
+const { joinConfiguredVoice, keepAlive } = require("../utils/voice");
 const { ensureTicketPanel } = require("../utils/panel");
 
 module.exports = {
@@ -21,6 +21,7 @@ module.exports = {
     });
 
     await joinConfiguredVoice(client, config);
+    keepAlive(client, config); // Manter bot conectado 24/7
     await ensureTicketPanel(client, config);
 
     console.log(`${config.botName} conectado como ${client.user.tag}`);

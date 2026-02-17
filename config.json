@@ -24,13 +24,13 @@
     {
       "id": "delux",
       "name": "Otimizacao Delux",
-      "priceOriginal": "R$ 19,99",
+      "priceOriginal": "R$ ~~19,99~~",
       "pricePromo": "R$ 10,99"
     },
     {
       "id": "edge",
       "name": "Otimizacao Edge",
-      "priceOriginal": "R$ 10,50",
+      "priceOriginal": "R$ ~~10,50~~",
       "pricePromo": "R$ 5,00"
     }
   ],
